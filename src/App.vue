@@ -1,28 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <TicTacToe :key="key" @forceRender="restart"></TicTacToe>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import TicTacToe from "@/components/TicTacToe";
+  export default {
+    name: 'App',
+    components: {
+      TicTacToe
+    },
+    data () {
+      return {
+        key: 0
+      }
+    },
+    methods: {
+      restart () {
+        this.key = !this.key
+      }
+    }
   }
-}
 </script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
 </style>
